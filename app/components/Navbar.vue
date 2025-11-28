@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
-const route = useRoute()
+const router = useRouter()
 
 const items = computed<NavigationMenuItem[]>(() => [
   {
@@ -79,25 +79,29 @@ const items = computed<NavigationMenuItem[]>(() => [
     ]
   },
   {
-    label: 'Sobre EcoUPA',
+    label: 'Sobre EcoUNI',
     icon: 'i-lucide-leaf',
     to: '#',
     children: [
       {
         label: 'Quiénes somos',
         icon: 'i-lucide-info',
-        description: 'Conoce la historia y el propósito de EcoUPA.',
-        to: '#'
+        description: 'Conoce la historia y el propósito de EcoUNI.',
+        to: '/sobre-nosotros'
       },
       {
         label: 'Contacto',
         icon: 'i-lucide-mail',
         description: 'Escríbenos o colabora con nosotros.',
-        to: '#'
+        to: '/contacto'
       }
     ]
   }
 ])
+
+function goAuth(){
+  router.push("/auth")
+}
 </script>
 
 <template>
@@ -107,7 +111,7 @@ const items = computed<NavigationMenuItem[]>(() => [
         <!-- <img src="/logo.png" alt="EcoUPA" class="h-6 w-6" /> -->
         <div class="flex items-center gap-2">
         <UIcon name="i-lucide-recycle" class="text-green-600 w-6 h-6" />
-        <span class="font-semibold text-green-600">EcoUPA</span>
+        <span class="font-semibold text-green-600">EcoUNI</span>
 </div>
 
       </div>
@@ -117,6 +121,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 
     
     <template #right>
+      <UButton  icon="i-lucide-user" size="lg" color="neutral" variant="link" @click="goAuth"/>
       <UColorModeButton />
     </template>
     <template #body>
